@@ -10,6 +10,12 @@ export function ModuleCard({ app }: ModuleCardProps) {
     protocols: '#3b82f6',
     handover: '#22c55e',
     qiProject: '#a855f7',
+    dummyApp0: '#ff6347', // Tomato
+    dummyApp1: '#4682b4', // SteelBlue
+    dummyApp2: '#8a2be2', // BlueViolet
+    dummyApp3: '#3cb371', // MediumSeaGreen
+    dummyApp4: '#ffa500', // Orange
+    dummyApp5: '#da70d6', // Orchid
   };
 
   const color = colors[app.id] || '#6b7280'; // default to gray
