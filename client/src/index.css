@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.hover\:animate-pause:hover {
+  animation-play-state: paused;
+}
+
+.modern-frame {
+  background-image: conic-gradient(from 90deg, theme('colors.primary.200') 0.75turn, transparent 0.75turn);
+}
+
+.dark .modern-frame {
+  background-image: conic-gradient(from 90deg, theme('colors.primary.700') 0.75turn, transparent 0.75turn);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 25s) linear infinite;
+}
