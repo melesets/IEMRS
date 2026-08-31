@@ -38,7 +38,7 @@ export function Dashboard() {
           <DashboardHome />
         </main>
         <footer className="text-center py-6 text-xs text-slate-300 dark:text-slate-400 font-medium">
-          Powered by AGH-HSQD
+          &copy; {new Date().getFullYear()} Adare General Hospital (Fullanke). All rights reserved. Powered by AGH-HSQD
         </footer>
       </div>
     </div>
