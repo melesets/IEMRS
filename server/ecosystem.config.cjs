@@ -4,6 +4,7 @@ module.exports = {
     cwd: 'C:\\App file\\IEMRS\\server',
     script: 'server.js',
     interpreter: 'node',
+    exec_mode: 'fork',
     instances: 1,
     autorestart: true,
     watch: false,
