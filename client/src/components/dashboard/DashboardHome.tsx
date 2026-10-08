@@ -1,12 +1,24 @@
+import { useState } from 'react';
 import { ModuleCard } from './ModuleCard';
+import { ModuleSubPage } from './ModuleSubPage';
 import { hospitalApps } from '../../config/apps';
 import { HospitalApp } from '../../types';
 
 export function DashboardHome() {
+  const [selectedApp, setSelectedApp] = useState<HospitalApp | null>(null);
   const allApps: HospitalApp[] = Object.values(hospitalApps);
 
+  if (selectedApp) {
+    return (
+      <ModuleSubPage
+        app={selectedApp}
+        onBack={() => setSelectedApp(null)}
+      />
+    );
+  }
+
   return (
-    <div className="p-3 sm:p-5 lg:p-6 max-w-6xl mx-auto">
+    <div className="pt-10 sm:pt-14 lg:pt-16 px-3 pb-3 sm:px-5 sm:pb-5 lg:px-6 lg:pb-6 max-w-6xl mx-auto">
       <div className="text-center mb-4 sm:mb-6 lg:mb-8">
         <div className="flex justify-center mb-3 sm:mb-4 lg:mb-5">
           <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full bg-white flex items-center justify-center p-1 border-2 border-white ring-4 ring-white/15 shadow-[0_0_25px_rgba(255,255,255,0.75),_0_12px_30px_rgba(0,0,0,0.25)]">
@@ -34,6 +46,7 @@ export function DashboardHome() {
             <ModuleCard
               key={app.id}
               app={app}
+              onOpen={setSelectedApp}
             />
           ))}
         </div>

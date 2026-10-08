@@ -5,14 +5,18 @@ import { getIconByAppId, getIconColorByAppId } from '../icons';
 
 interface ModuleCardProps {
   app: HospitalApp;
+  onOpen?: (app: HospitalApp) => void;
 }
 
-export const ModuleCard: React.FC<ModuleCardProps> = ({ app }) => {
+export const ModuleCard: React.FC<ModuleCardProps> = ({ app, onOpen }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const icon = getIconByAppId(app.id);
   const iconBgColor = getIconColorByAppId(app.id);
-  const isExternalLink = app.url.startsWith('http');
+  const subApps = app.subApps ?? [];
+  const hasSubApps = subApps.length > 1;
+  const targetUrl = subApps.length === 1 ? subApps[0].url : app.url;
+  const isExternalLink = typeof targetUrl === 'string' && targetUrl.startsWith('http');
 
   const cardContent = (
     <div 
@@ -55,10 +59,27 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({ app }) => {
     ${isHovered ? 'shadow-[0_12px_32px_rgba(30,58,138,0.12)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.4)] border-blue-500/30 dark:border-blue-400/30 bg-white/90 dark:bg-slate-900/80 scale-[1.04]' : ''}
   `;
 
+  if (hasSubApps) {
+    return (
+      <TiltCard
+        className={cardClasses}
+        onClick={() => onOpen?.(app)}
+      >
+        <div 
+          className="w-full h-full"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {cardContent}
+        </div>
+      </TiltCard>
+    );
+  }
+
   return isExternalLink ? (
     <TiltCard className={cardClasses}>
       <a 
-        href={app.url}
+        href={targetUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full h-full"
@@ -71,7 +92,7 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({ app }) => {
   ) : (
     <TiltCard 
       className={cardClasses}
-      onClick={() => console.log('Navigate to:', app.url)}
+      onClick={() => console.log('Navigate to:', targetUrl)}
     >
       <div 
         className="w-full h-full"

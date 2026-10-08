@@ -65,7 +65,7 @@ export const SBFRIcon: React.FC = () => (
   </svg>
 );
 
-export const KaizenIcon: React.FC = () => (
+export const REPORTIcon: React.FC = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="16" cy="16" r="14" fill="#E67E22" opacity="0.9"/>
     <circle cx="16" cy="12" r="4" fill="#FDF2E9"/>
@@ -144,14 +144,25 @@ export const HIEMSIcon: React.FC = () => (
   </svg>
 );
 
+export const TATIcon: React.FC = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="5" width="22" height="22" rx="5" fill="#E67E22" opacity="0.9"/>
+    <circle cx="16" cy="16" r="7" fill="#FDF2E9"/>
+    <path d="M16 10V16L20 18" stroke="#E67E22" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 6H20" stroke="#FDF2E9" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M22 22L25 25" stroke="#FDF2E9" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M10 22L7 25" stroke="#FDF2E9" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
 export const getIconByAppId = (appId: string): React.ReactNode => {
   const icons: Record<string, React.ReactNode> = {
     isbar: <ISBARIcon />,
     cpams: <CPAMSIcon />,
     qippms: <QIPPMSIcon />,
     sbfr: <SBFRIcon />,
-    kaizen: <KaizenIcon />,
-    nmsd: <AppointmentsIcon />,
+    TAT: <TATIcon />,
+    csms: <AppointmentsIcon />,
     bahmni: <BahmniIcon />,
     sir: <SirIcon />,
     dagu: <DrugIcon />,
@@ -170,7 +181,9 @@ export const getIconColorByAppId = (appId: string): string => {
     qippms: '#F5EEF8',
     sbfr: '#E8F8F5',
     kaizen: '#FDF2E9',
-    nmsd: '#FDEDEC',
+    TAT: '#FDF2E9',
+    tat: '#FDF2E9',
+    csms: '#FDEDEC',
     bahmni: '#EBF5FB',
     sir: '#F8F9F9',
     dagu: '#EAFAF1',

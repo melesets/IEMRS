@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { TopBar } from './TopBar';
 import { DashboardHome } from '../dashboard/DashboardHome';
+import { useTheme } from '../../contexts/ThemeContext';
+import { Moon, Sun } from 'lucide-react';
 
 export function Dashboard() {
   const [videoFailed, setVideoFailed] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
     <div className="relative min-h-screen flex flex-col text-slate-900 dark:text-slate-100 overflow-x-hidden">
@@ -32,8 +34,14 @@ export function Dashboard() {
       )}
       <div className="fixed inset-0 z-0 bg-black/10 pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col min-h-screen pt-16">
-        <TopBar />
+      <button
+        onClick={toggleTheme}
+        className="fixed top-4 right-4 z-50 p-2.5 bg-white/20 dark:bg-slate-800/30 backdrop-blur-md rounded-full text-slate-700 dark:text-slate-300 hover:bg-white/30 dark:hover:bg-slate-800/50 transition-colors border border-white/10"
+      >
+        {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+
+      <div className="relative z-10 flex flex-col min-h-screen">
         <main className="flex-grow">
           <DashboardHome />
         </main>

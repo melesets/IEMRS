@@ -1,4 +1,4 @@
-import { HospitalApp } from '../types';
+﻿import { HospitalApp } from '../types';
 
 export const hospitalApps: Record<string, HospitalApp> = {
   isbar: {
@@ -21,15 +21,77 @@ export const hospitalApps: Record<string, HospitalApp> = {
     name: 'SBFR',
     url: import.meta.env.VITE_URL_SBFR as string,
   },
-  kaizen: {
-    id: 'kaizen',
-    name: 'Kaizen',
-    url: import.meta.env.VITE_URL_KAIZEN as string,
+  TAT: {
+    id: 'TAT',
+    name: 'QPulse',
+    url: import.meta.env.VITE_URL_QPULSE as string,
+    subApps: [
+      {
+        id: 'tat-lab',
+        name: 'LAB',
+        url: import.meta.env.VITE_URL_QPULSE_LAB as string,
+      },
+      {
+        id: 'tat-emer',
+        name: 'EMER',
+        url: import.meta.env.VITE_URL_QPULSE_EMER as string,
+      },
+      {
+        id: 'tat-opd',
+        name: 'OPD',
+        url: import.meta.env.VITE_URL_QPULSE_OPD as string,
+      },
+      {
+        id: 'tat-liaison',
+        name: 'LIAISON',
+        url: import.meta.env.VITE_URL_QPULSE_LIAISON as string,
+      },
+      {
+        id: 'tat-pharm',
+        name: 'PHARM',
+        url: import.meta.env.VITE_URL_QPULSE_PHARM as string,
+      },
+      {
+        id: 'tat-ob',
+        name: 'OB',
+        url: import.meta.env.VITE_URL_QPULSE_OB as string,
+      },
+      {
+        id: 'tat-rad',
+        name: 'RAD',
+        url: import.meta.env.VITE_URL_QPULSE_RAD as string,
+      },
+      {
+        id: 'tat-or',
+        name: 'OR',
+        url: import.meta.env.VITE_URL_QPULSE_OR as string,
+      },
+      {
+        id: 'tat-survey',
+        name: 'SURVEY',
+        url: import.meta.env.VITE_URL_QPULSE_SURVEY as string,
+      },
+      {
+        id: 'tat-ehsig',
+        name: 'EHSIG',
+        url: import.meta.env.VITE_URL_QPULSE_EHSIG as string,
+      },
+      {
+        id: 'tat-caudit',
+        name: 'CAudit',
+        url: import.meta.env.VITE_URL_QPULSE_CAUDIT as string,
+      },
+      {
+        id: 'tat-misce',
+        name: 'MISCE',
+        url: import.meta.env.VITE_URL_QPULSE_MISCE as string,
+      },
+    ],
   },
-  nmsd: {
-    id: 'nmsd',
-    name: 'NMSD',
-    url: import.meta.env.VITE_URL_NMSD as string,
+  csms: {
+    id: 'csms',
+    name: 'CSMS',
+    url: import.meta.env.VITE_URL_CSMS as string,
   },
   bahmni: {
     id: 'bahmni',

@@ -135,3 +135,26 @@ pm2 restart qippms
 2. Add the URL to `.env` (e.g., `VITE_URL_NEWMODULE=http://...`)
 3. Add a custom icon in `client/src/components/icons/Icons.tsx` and register it in `getIconByAppId` and `getIconColorByAppId`
 4. Rebuild: `cd client && npm run build`
+
+## Intermediate Module Pages (Multi-Destination Modules)
+
+> Not enabled for any module by default — add `subApps` to a module below when needed.
+
+A module can optionally declare multiple destinations via `subApps` in `client/src/config/apps.tsx`. The launcher switches automatically:
+
+- **`subApps` absent, empty, or a single entry** → the module card opens its URL directly in a new tab (unchanged behavior)
+- **2 or more entries** → clicking the card opens an intermediate page listing one card per destination, with a *Back to Modules* button
+
+```tsx
+bahmni: {
+  id: 'bahmni',
+  name: 'Bahmni',
+  url: import.meta.env.VITE_URL_BAHMNI as string,
+  subApps: [
+    { id: 'bahmni-emr', name: 'EMR', url: 'http://...', description: 'Electronic medical records' },
+    { id: 'bahmni-lab', name: 'Laboratory', url: 'http://...', description: 'Lab results and orders' },
+  ],
+},
+```
+
+Add the sub-destination URLs to `.env` (e.g., `VITE_URL_BAHMNI_EMR=http://...`). Remove `subApps` to revert a module to direct opening.
